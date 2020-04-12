@@ -4,15 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@color/mainBackground"
+    tools:context="com.activities.MainActivity">
 
     <TextView
+        android:id="@+id/textViewWelcomeMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="108dp"
+        android:text="@string/textfieldWelcome"
+        android:textAlignment="center"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonPlanYourTrip"
+        android:layout_width="305dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/roundbutton"
+        android:text="@string/buttonPlanYourTrip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewWelcomeMessage" />
+
+    <Button
+        android:id="@+id/buttonOfferATicket"
+        android:layout_width="305dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/roundbutton"
+        android:text="@string/buttonOfferATicket"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonPlanYourTrip" />
+
+    <Button
+        android:id="@+id/buttonCreateAnAccount"
+        android:layout_width="305dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="160dp"
+        android:background="@drawable/roundbutton"
+        android:clickable="true"
+        android:onClick="registerNewUser"
+        android:text="@string/buttonRegister"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonOfferATicket"
+        app:layout_constraintVertical_bias="0.087" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="112dp"
+        android:layout_height="129dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCreateAnAccount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonOfferATicket"
+        app:layout_constraintVertical_bias="0.404"
+        app:srcCompat="@drawable/train" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

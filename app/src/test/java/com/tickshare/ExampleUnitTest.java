@@ -1,4 +1,4 @@
-package com.example.tickshare;
+package com.tickshare;
 
 import org.junit.Test;
 

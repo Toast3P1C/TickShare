@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">TickShare</string>
+    <string name="buttonLogin">Login</string>
+    <string name="buttonRegister">Create an Account</string>
+    <string name="textfieldWelcome"><b><i>Welcome to TickShare,\n thanks for using the App !</i></b></string>
+    <string name="buttonLogout">logout</string>
+    <string name="buttonChange_password">Change Password</string>
+    <string name="buttonPlanYourTrip"><b><i>Plan your Trip</i></b> </string>
+    <string name="buttonOfferATicket"><b><i>Offer a Ticket</i></b> </string>
+    <string name="textfieldCreateAccount"><b><i>Create an Account</i></b></string>
+    <string name="textfieldName">Name</string>
+    <string name="textfieldLastName">Last Name</string>
+    <string name="textfielRegion">Region</string>
+    <string name="textfieldEmailAddress">Email Address</string>
+    <string name="textfieldPassword">Password</string>
+    <string name="textfieldConfirmPassword">Confirm Password</string>
+    <string name="buttonNext">Next</string>
 </resources>
