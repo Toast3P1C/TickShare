@@ -1,6 +1,7 @@
 package com.management;
 
 import com.authentication.Constants;
+import com.authentication.PasswordUtils;
 
 import org.junit.Before;
 import org.junit.Test;

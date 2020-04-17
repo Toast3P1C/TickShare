@@ -7,6 +7,7 @@ public interface IUser {
     public String getLastName();
     public String getRegion();
     public String getEmailAddress();
-    public String getPassword();
     public String getToken();
+    public String getPassword();
+    public String getSalt();
 }
