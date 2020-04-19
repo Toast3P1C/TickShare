@@ -34,6 +34,10 @@ public class UserManager {
         }
     }
 
+    public IUser getUserFromEmail(String email){
+        return userList.stream().filter(user -> user.getEmailAddress().equals(email)).findAny().orElse(null);
+    }
+
     public boolean addContact(IUser user){
         return contactList.add(user);
     }

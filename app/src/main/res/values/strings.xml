@@ -15,4 +15,7 @@
     <string name="textfieldPassword">Password</string>
     <string name="textfieldConfirmPassword">Confirm Password</string>
     <string name="buttonNext">Next</string>
+    <string name="buttonAlreadyRegistred">Already got an Account ? Click here to login !</string>
+    <string name="textFieldLogin">Login</string>
+    <string name="buttonBack">Back</string>
 </resources>

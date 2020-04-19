@@ -7,40 +7,16 @@
     android:background="@color/mainBackground"
     tools:context="com.activities.MainActivity">
 
-    <TextView
-        android:id="@+id/textViewWelcomeMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
-        android:text="@string/textfieldWelcome"
-        android:textAlignment="center"
-        android:textColor="@color/design_default_color_on_secondary"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/buttonPlanYourTrip"
         android:layout_width="305dp"
         android:layout_height="78dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/roundbutton"
         android:text="@string/buttonPlanYourTrip"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewWelcomeMessage" />
-
-    <Button
-        android:id="@+id/buttonOfferATicket"
-        android:layout_width="305dp"
-        android:layout_height="78dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/roundbutton"
-        android:text="@string/buttonOfferATicket"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonPlanYourTrip" />
 
     <Button
         android:id="@+id/buttonCreateAnAccount"
@@ -49,13 +25,13 @@
         android:layout_marginTop="160dp"
         android:background="@drawable/roundbutton"
         android:clickable="true"
-        android:onClick="registerNewUser"
+        android:onClick="onRegisterNewUser"
         android:text="@string/buttonRegister"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonOfferATicket"
-        app:layout_constraintVertical_bias="0.087" />
+        app:layout_constraintVertical_bias="0.178" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -66,7 +42,47 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonOfferATicket"
-        app:layout_constraintVertical_bias="0.404"
+        app:layout_constraintVertical_bias="0.629"
         app:srcCompat="@drawable/train" />
+
+    <Button
+        android:id="@+id/buttonOfferATicket"
+        android:layout_width="305dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/roundbutton"
+        android:text="@string/buttonOfferATicket"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonPlanYourTrip" />
+
+    <TextView
+        android:id="@+id/textViewWelcomeMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="@string/textfieldWelcome"
+        android:textAlignment="center"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonAlreadyRegistred"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="359dp"
+        android:layout_height="44dp"
+        android:background="@color/mainBackground"
+        android:onClick="onLogin"
+        android:text="@string/buttonAlreadyRegistred"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCreateAnAccount"
+        app:layout_constraintVertical_bias="0.322" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

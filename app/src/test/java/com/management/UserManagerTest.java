@@ -1,7 +1,7 @@
 package com.management;
 
 import com.authentication.Constants;
-import com.authentication.PasswordUtils;
+
 
 import org.junit.Before;
 import org.junit.Test;
@@ -58,5 +58,10 @@ public class UserManagerTest {
 
     @Test
     public void getUserList() {
+    }
+    @Test
+    public void getUserByEmailAddressUseCase(){
+        userManager.createUser(NAME,LAST_NAME,REGION,EMAILADDRESS,PASSWORD);
+        assertNotNull(userManager.getUserFromEmail(EMAILADDRESS));
     }
 }
