@@ -62,6 +62,13 @@ public class UserManager  {
         return nameToUpperCase;
     }
 
+    /**
+     * Method stub
+     */
+    public void sendTripToServer(){
+
+    }
+
 
     private boolean checkUserData(String name, String lastName, String region, String emailAddress,
                                   String password){
@@ -82,12 +89,12 @@ public class UserManager  {
         }
         if(emailAddress == null || emailAddress.isEmpty() || !Validator.validateEmail(emailAddress)){
             errorMap.put(new Object(){}.getClass().getEnclosingMethod().getName(),"Email can not be empty or dose not match pattern: "+Constants.EMAIL_REGEX);
-            LOG.error("name is null or empty");
+            LOG.error("email is null or empty or dose not match the pattern");
             return false;
         }
         if(password == null || password.isEmpty() || password.length() < Constants.PASSWORDLENGTH){
             errorMap.put(new Object(){}.getClass().getEnclosingMethod().getName(),"Password can not be empty or is shorter than 7 characters");
-            LOG.error("name is null or empty");
+            LOG.error("password is null or empty");
             return false;
         }
         return true;

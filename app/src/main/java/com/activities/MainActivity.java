@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         userManager = new UserManager();
-        userManager.createUser("Paul","Wüsthoff","Berlin","paul.tester@test.test","test1234");
+        //userManager.createUser("Paul","Wüsthoff","Berlin","paul.tester@test.test","test1234");
         setContentView(R.layout.activity_main);
     }
     public void onRegisterNewUser(View view){

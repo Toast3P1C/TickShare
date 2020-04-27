@@ -141,7 +141,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewHowmanySeatsLeft" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/buttonOfferNow"
         android:layout_width="131dp"
         android:layout_height="48dp"
         android:layout_marginBottom="16dp"
