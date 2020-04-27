@@ -31,7 +31,6 @@ public class UserLoginActivity extends AppCompatActivity {
 
     public void onLogin(View view){
         //TODO: Change this later
-        userManager.createUser("Paul","Tester","RestRegion","Test@test.de","sicher1234");
         System.out.println(authenticateUser(textFieldPassword.getText().toString()));
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);

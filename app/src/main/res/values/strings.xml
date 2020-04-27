@@ -18,4 +18,16 @@
     <string name="buttonAlreadyRegistred">Already got an Account ? Click here to login !</string>
     <string name="textFieldLogin">Login</string>
     <string name="buttonBack">Back</string>
+    <string name="textFieldPlanYourTrip"><b>Plan your Trip</b></string>
+    <string name="textFieldWhereDoYouWantToStart">Where do you want to start ? </string>
+    <string name="texfieldWhereDoYouWantToGo">Where dou you want to go ? </string>
+    <string name="textFieldWhen">When do you want to go ? </string>
+    <string name="buttonNow">Now</string>
+    <string name="buttonDate">Date</string>
+    <string name="buttonSearch">Search</string>
+    <string name="textFieldOfferATrip"><b>Offer a Trip</b></string>
+    <string name="textFieldwhereDoYouStart">Where do you start ? </string>
+    <string name="textFieldwhenDoYouStart">When do you start ? </string>
+    <string name="textFieldseatsLeft">How many seats do you have left ? </string>
+    <string name="buttonOfferNow">Offer now </string>
 </resources>

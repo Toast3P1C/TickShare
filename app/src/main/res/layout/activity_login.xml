@@ -41,7 +41,7 @@
         android:background="@drawable/roundinputtextfield"
         android:ems="10"
         android:importantForAutofill="no"
-        android:inputType="textPersonName"
+        android:inputType="textWebPassword"
         app:layout_constraintBottom_toBottomOf="@+id/backgroundUserLogin"
         app:layout_constraintEnd_toEndOf="@+id/backgroundUserLogin"
         app:layout_constraintHorizontal_bias="0.504"

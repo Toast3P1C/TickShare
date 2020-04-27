@@ -12,6 +12,7 @@ public class User implements IUser {
     private String token;
     private String salt;
 
+
     public User(String name, String lastName, String region, String emailAddress, String password) {
         this.name = name;
         this.lastName = lastName;

@@ -8,6 +8,7 @@ import com.model.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,11 +16,13 @@ import java.util.Map;
 
 
 
-public class UserManager {
+public class UserManager  {
     private List<IUser> userList = new ArrayList<>();
     private List<IUser> contactList = new ArrayList<>();
     private Map<String,String> errorMap = new HashMap<>();
     private final static Logger LOG = LogManager.getLogger(UserManager.class);
+
+
 
 
     public boolean createUser(String name, String lastName, String region, String emailAddress,
@@ -41,7 +44,8 @@ public class UserManager {
     public boolean addContact(IUser user){
         return contactList.add(user);
     }
-    public boolean deleteContact(final IUser user){
+
+    public boolean deleteContact(IUser user){
         return contactList.removeIf(u -> u.getToken().equals(user.getToken()));
     }
 

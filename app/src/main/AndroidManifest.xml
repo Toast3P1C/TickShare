@@ -17,6 +17,8 @@
         </activity>
         <activity android:name="com.activities.RegisterActivity"></activity>
         <activity android:name="com.activities.UserLoginActivity"></activity>
+        <activity android:name="com.activities.PlanYourTripActivity"></activity>
+        <activity android:name="com.activities.OfferATripActivity"></activity>
     </application>
 
 </manifest>
