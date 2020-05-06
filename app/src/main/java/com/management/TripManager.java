@@ -20,8 +20,8 @@ public class TripManager {
 
     public boolean createTrip(String startingLocation, String destination, Date startingTime, Integer seatsLeft, String userToken) {
         if(checkTripValues(startingLocation,destination,startingTime,seatsLeft,userToken)){
-            ITrip trip = new Trip(startingLocation,destination,startingTime,seatsLeft,userToken);
-            return tripList.add(trip);
+            //ITrip trip = new Trip(startingLocation,destination,startingTime,seatsLeft,userToken);
+            //return tripList.add(trip);
         }
         return false;
     }
