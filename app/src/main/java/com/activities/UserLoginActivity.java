@@ -9,15 +9,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.authentication.PasswordUtils;
-import com.management.UserManager;
 import com.tickshare.R;
 
 public class UserLoginActivity extends AppCompatActivity {
     private EditText textFieldEmail, textFieldPassword;
-    private UserManager userManager;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        userManager = new UserManager();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         textFieldEmail = findViewById(R.id.inputTextEmailAddressLogin);
@@ -36,6 +33,6 @@ public class UserLoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
     private boolean authenticateUser(String password){
-        return PasswordUtils.verifyUserPassword(password,userManager.getUserFromEmail(textFieldEmail.toString()).getPassword(),userManager.getUserFromEmail(textFieldEmail.toString()).getSalt() );
+        return PasswordUtils.verifyUserPassword(password,MainActivity.userManager.getUserFromEmail(textFieldEmail.toString()).getPassword(),MainActivity.userManager.getUserFromEmail(textFieldEmail.toString()).getSalt() );
     }
 }

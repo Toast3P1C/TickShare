@@ -43,19 +43,4 @@ public class Trip implements ITrip {
         return userToken;
     }
 
-    public void setStartingLocation(String startingLocation) {
-        this.startingLocation = startingLocation;
-    }
-
-    public void setDestination(String destination) {
-        this.destination = destination;
-    }
-
-    public void setStartingTime(Date startingTime) {
-        this.startingTime = startingTime;
-    }
-
-    public void setSeatsLeft(Integer seatsLeft) {
-        this.seatsLeft = seatsLeft;
-    }
 }

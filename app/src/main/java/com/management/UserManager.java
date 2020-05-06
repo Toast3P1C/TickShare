@@ -49,9 +49,6 @@ public class UserManager  {
         return contactList.removeIf(u -> u.getToken().equals(user.getToken()));
     }
 
-    private boolean addUserToList(IUser user){
-        return userList.add(user);
-    }
 
     public List<IUser> getUserList() {
         return userList;
