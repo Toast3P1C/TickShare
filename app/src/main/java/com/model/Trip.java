@@ -7,13 +7,38 @@ public class Trip implements ITrip {
     private long id;
     private String startingLocation;
     private String destination;
-    private Date startingTime;
-    private Integer seatsLeft;
+    private String startingTime;
+    private String seatsLeft;
     private String userToken;
 
-    public Trip(){}
-    public Trip(long id, String startingLocation, String destination, Date startingTime, Integer seatsLeft, String userToken) {
+
+    /**
+     * Wird benötigt um die Objekte von Server zu bekommen
+     * @param id
+     * @param startingLocation
+     * @param destination
+     * @param startingTime
+     * @param seatsLeft
+     * @param userToken
+     */
+    public Trip(long id, String startingLocation, String destination, String startingTime, String seatsLeft, String userToken) {
         this.id = id;
+        this.startingLocation = startingLocation;
+        this.destination = destination;
+        this.startingTime = startingTime;
+        this.seatsLeft = seatsLeft;
+        this.userToken = userToken;
+    }
+
+    /**
+     * Erstellung der der Trip Objekte in der App
+     * @param startingLocation
+     * @param destination
+     * @param startingTime
+     * @param seatsLeft
+     * @param userToken
+     */
+    public Trip(String startingLocation, String destination, String startingTime, String seatsLeft, String userToken){
         this.startingLocation = startingLocation;
         this.destination = destination;
         this.startingTime = startingTime;
@@ -25,9 +50,6 @@ public class Trip implements ITrip {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     @Override
     public String getStartingLocation() {
@@ -40,18 +62,34 @@ public class Trip implements ITrip {
     }
 
     @Override
-    public Date getStartingTime() {
+    public String getStartingTime() {
         return startingTime;
     }
 
     @Override
-    public Integer getSeatsLeft() {
+    public String getSeatsLeft() {
         return seatsLeft;
     }
 
     @Override
     public String getUserToken() {
         return userToken;
+    }
+
+    public void setStartingLocation(String startingLocation) {
+        this.startingLocation = startingLocation;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public void setStartingTime(String startingTime) {
+        this.startingTime = startingTime;
+    }
+
+    public void setSeatsLeft(String seatsLeft) {
+        this.seatsLeft = seatsLeft;
     }
 
     @Override

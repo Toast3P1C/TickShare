@@ -45,7 +45,7 @@
         android:id="@+id/textViewWhenDoYouStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="92dp"
         android:text="@string/textFieldwhenDoYouStart"
         android:textColor="@color/design_default_color_on_secondary"
         app:layout_constraintEnd_toEndOf="@+id/backgroundOfferATrip"
@@ -140,6 +140,18 @@
         app:layout_constraintStart_toStartOf="@+id/backgroundOfferATrip"
         app:layout_constraintTop_toBottomOf="@+id/textViewHowmanySeatsLeft" />
 
+    <EditText
+        android:id="@+id/editTextWhereDoYouWantToGo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/roundinputtextfield"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/backgroundOfferATrip"
+        app:layout_constraintStart_toStartOf="@+id/backgroundOfferATrip"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
     <Button
         android:id="@+id/buttonOfferNow"
         android:layout_width="131dp"
@@ -151,5 +163,16 @@
         app:layout_constraintEnd_toEndOf="@+id/backgroundOfferATrip"
         app:layout_constraintHorizontal_bias="0.917"
         app:layout_constraintStart_toStartOf="@+id/backgroundOfferATrip" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/texfieldWhereDoYouWantToGo"
+        android:textColor="@color/design_default_color_on_secondary"
+        app:layout_constraintEnd_toEndOf="@+id/backgroundOfferATrip"
+        app:layout_constraintStart_toStartOf="@+id/backgroundOfferATrip"
+        app:layout_constraintTop_toBottomOf="@+id/editTextWhereDouYouStart" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

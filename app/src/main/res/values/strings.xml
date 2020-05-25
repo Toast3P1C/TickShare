@@ -30,4 +30,5 @@
     <string name="textFieldwhenDoYouStart">When do you start ? </string>
     <string name="textFieldseatsLeft">How many seats do you have left ? </string>
     <string name="buttonOfferNow">Offer now </string>
+    <string name="textFieldWhereDoyouWantToGo">Where do you want to go ? </string>
 </resources>
