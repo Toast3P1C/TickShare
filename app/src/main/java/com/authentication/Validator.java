@@ -4,6 +4,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Validator {
+    /**
+     * Class for validating user input
+     */
 
     private Validator() {
 

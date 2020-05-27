@@ -4,7 +4,7 @@ import com.authentication.Constants;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.model.ITrip;
+
 
 public class NetworkManager implements INetworkManager {
 

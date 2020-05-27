@@ -16,11 +16,16 @@ import java.util.Map;
 
 
 public class UserManager implements IUserManager {
-    private List<IUser> userList = new ArrayList<>();
-    private List<IUser> contactList = new ArrayList<>();
-    private Map<String, String> errorMap = new HashMap<>();
+    private List<IUser> userList;
+    private List<IUser> contactList;
+    private Map<String, String> errorMap;
     private final static Logger LOG = LogManager.getLogger(UserManager.class);
 
+    public UserManager() {
+        this.userList = new ArrayList<>();
+        this.contactList = new ArrayList<>();
+        this.errorMap = new HashMap<>();
+    }
 
     @Override
     public boolean createUser(String name, String lastName, String region, String emailAddress,
@@ -79,7 +84,7 @@ public class UserManager implements IUserManager {
         }
         if (emailAddress == null || emailAddress.isEmpty() || !Validator.validateEmail(emailAddress)) {
             errorMap.put(new Object() {
-            }.getClass().getEnclosingMethod().getName(), "Email can not be empty or dose not match pattern: " + Constants.EMAIL_REGEX);
+            }.getClass().getEnclosingMethod().getName(), "Email can not be empty or does not match pattern: " + Constants.EMAIL_REGEX);
             LOG.error("email is null or empty or dose not match the pattern");
             return false;
         }

@@ -11,6 +11,9 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
 public class PasswordUtils {
+    /**
+     * Class which provides methods for creating an secure password and verify user login data
+     */
     private static final Random RANDOM = new SecureRandom();
     private static final String ALPHABET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     private static final int ITERATIONS = 10000;
@@ -45,8 +48,7 @@ public class PasswordUtils {
     }
 
     public static boolean verifyUserPassword(String providedPassword,
-                                             String securedPassword, String salt)
-    {
+                                             String securedPassword, String salt) {
         boolean returnValue = false;
 
         // Generate New secure password with the same salt

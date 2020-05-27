@@ -7,31 +7,20 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.authentication.Constants;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.loopj.android.http.JsonHttpResponseHandler;
 import com.management.ITripManager;
 import com.management.TripManager;
 import com.management.UserManager;
-import com.model.ITrip;
-import com.model.Trip;
 import com.network.INetworkManager;
 import com.network.NetworkManager;
 import com.tickshare.R;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.json.JSONObject;
+
 
 import java.text.SimpleDateFormat;
-import java.time.Clock;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.Locale;
 
-import cz.msebera.android.httpclient.Header;
 
 
 
@@ -49,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         networkManager = new NetworkManager();
         tripManager = new TripManager();
 
-
         //userManager.createUser("Paul","Wüsthoff","Berlin","paul.tester@test.test","test1234");
 
         setContentView(R.layout.activity_main);
@@ -61,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
     public void onLogin(View view){
         Intent intent = new Intent(this,UserLoginActivity.class);
         startActivity(intent);
-        test();
     }
 
     public void onPlanYourTrip(View view){

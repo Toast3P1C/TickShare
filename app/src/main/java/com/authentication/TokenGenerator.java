@@ -8,6 +8,9 @@ import java.util.Objects;
 import java.util.Random;
 
 public class TokenGenerator {
+    /**
+     *Class for generating Usertokens
+     */
     public String nextString() {
         for (int idx = 0; idx < buf.length; ++idx)
             buf[idx] = symbols[random.nextInt(symbols.length)];

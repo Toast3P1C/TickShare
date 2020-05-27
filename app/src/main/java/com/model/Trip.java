@@ -1,5 +1,9 @@
 package com.model;
 
+import com.authentication.Constants;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Trip implements ITrip {
@@ -74,6 +78,23 @@ public class Trip implements ITrip {
     @Override
     public String getUserToken() {
         return userToken;
+    }
+
+    @Override
+    public Date getStartingTimeAsDate() {
+        Date date = null;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constants.DATEFORMAT);
+        try {
+            date = simpleDateFormat.parse(startingTime);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
+    }
+
+    @Override
+    public int getSeatsLeftAsInteger() {
+        return Integer.valueOf(seatsLeft);
     }
 
     public void setStartingLocation(String startingLocation) {

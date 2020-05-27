@@ -55,8 +55,8 @@ public class TripManager implements ITripManager {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 ObjectMapper objectMapper = new ObjectMapper();
                 try {
-                    System.out.println(objectMapper.readValue(response.toString(),Trip.class));
-                     trip[0] = objectMapper.readValue(response.toString(), Trip.class);
+                    System.out.println(objectMapper.readValue(response.toString(), Trip.class));
+                    trip[0] = objectMapper.readValue(response.toString(), Trip.class);
                 } catch (JsonProcessingException e) {
                     LOG.error("Error parsing Json", e);
                 }
@@ -67,9 +67,9 @@ public class TripManager implements ITripManager {
 
     @Override
     public boolean updateTrip(long id, String startingLocation, String destination, String startingTime, String seatsLeft) {
-        final boolean success[] ={false};
-        ITrip trip = setNewTripValues(id,startingLocation,destination,startingTime,seatsLeft);
-        if(trip != null) {
+        final boolean success[] = {false};
+        ITrip trip = setNewTripValues(id, startingLocation, destination, startingTime, seatsLeft);
+        if (trip != null) {
             networkManager.put("trip/" + id, setParamsForRequest(trip), new JsonHttpResponseHandler() {
 
                 @Override
@@ -83,14 +83,14 @@ public class TripManager implements ITripManager {
                 }
             });
             return success[0];
-        }else{
+        } else {
             return false;
         }
     }
 
-    private ITrip setNewTripValues(long id, String startingLocation, String destination, String startingTime, String seatsLeft ){
+    private ITrip setNewTripValues(long id, String startingLocation, String destination, String startingTime, String seatsLeft) {
         Trip trip = (Trip) getTripFromServer(id);
-        if(trip != null) {
+        if (trip != null) {
             if (!startingLocation.isEmpty() && startingLocation != null) {
                 trip.setStartingLocation(startingLocation);
             }
@@ -110,18 +110,19 @@ public class TripManager implements ITripManager {
         return trip;
     }
 
-    private RequestParams setParamsForRequest(ITrip trip){
+    private RequestParams setParamsForRequest(ITrip trip) {
         RequestParams params = new RequestParams();
         params.add("startingLocation", trip.getStartingLocation());
         params.add("destination", trip.getDestination());
-        params.add("startingTime", trip.getStartingTime().toString());
-        params.add("seatsLeft", String.valueOf(trip.getSeatsLeft()));
+        params.add("startingTime", trip.getStartingTime());
+        params.add("seatsLeft", trip.getSeatsLeft());
         params.add("userToken", trip.getUserToken());
         params.setUseJsonStreamer(true);
         return params;
     }
 
-    private boolean sendTripToServer(ITrip trip) {
+
+     boolean sendTripToServer(ITrip trip) {
         final boolean[] success = {false};
         networkManager.post("/trip", setParamsForRequest(trip), new JsonHttpResponseHandler() {
             @Override
