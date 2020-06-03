@@ -21,7 +21,7 @@ public class UserLoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         textFieldEmail = findViewById(R.id.inputTextEmailAddressLogin);
         textFieldPassword = findViewById(R.id.inputTextPasswordLogin);
-        MainActivity.userManager.createUser("Paul","Wüsthoff","Berlin","paulwpaul@web.de","1234567");
+       //MainActivity.userManager.createUser("Paul","Wüsthoff","Berlin","paulwpaul@web.de","1234567");
     }
 
     public void onBack(View view){

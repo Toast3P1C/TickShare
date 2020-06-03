@@ -27,6 +27,5 @@ public class OfferATripActivity extends AppCompatActivity {
         destination = findViewById(R.id.editTextWhereDoYouWantToGo);
         startingTime = findViewById(R.id.editTextWhenDoYOuStart);
         seatsLeft = findViewById(R.id.editTextHowManySeatsLeft);
-
     }
 }

@@ -31,4 +31,6 @@
     <string name="textFieldseatsLeft">How many seats do you have left ? </string>
     <string name="buttonOfferNow">Offer now </string>
     <string name="textFieldWhereDoyouWantToGo">Where do you want to go ? </string>
+    <string name="hintEmailLogin">Your Email address</string>
+    <string name="hintPassword">Password</string>
 </resources>

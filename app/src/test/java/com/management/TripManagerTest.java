@@ -1,16 +1,25 @@
 package com.management;
 
 import com.authentication.Constants;
-
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.model.ITrip;
+import com.model.Trip;
+import com.network.INetworkManager;
+import com.network.NetworkManager;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.ArgumentMatcher;
+import org.mockito.ArgumentMatchers;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.*;
 
 
 public class TripManagerTest {
@@ -77,8 +86,13 @@ public class TripManagerTest {
 
     @Test
     public void getTripFromServerUseCase(){
-        tripManager.getTripFromServer(1L);
+        ITrip trip = new Trip(startingLocation,destination,stringTime,seatLeft,userToken);
+        INetworkManager networkManager = mock(NetworkManager.class);
+        when(networkManager.get(Constants.BASE_URL+"/trips/1",null, ArgumentMatchers.<AsyncHttpResponseHandler>any())).thenReturn(trip);
+
     }
+
+
 
 
 }

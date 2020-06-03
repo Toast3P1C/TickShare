@@ -7,11 +7,11 @@ import com.model.User;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.internal.matchers.Null;
 
 import static org.junit.Assert.*;
 
 public class UserManagerTest {
-    //TODO: Add more test cases
     UserManager userManager = null;
     private static final String NAME = "Paul";
     private static final String LAST_NAME = "Tester";
@@ -65,9 +65,21 @@ public class UserManagerTest {
     }
 
     @Test
+    public void deleteContactNull() {
+        userManager.addContact(user);
+        assertThrows(NullPointerException.class,() -> userManager.deleteContact(null));
+    }
+
+    @Test
+    public void deleteContactNotInList() {
+        userManager.addContact(user);
+        assertFalse(userManager.deleteContact(new User("der Falsche","klaus","testregion","test@test","1234567")));
+    }
+    @Test
     public void getUserList() {
         assertNotNull(userManager.getUserList());
     }
+
     @Test
     public void getUserByEmailAddressUseCase(){
         userManager.createUser(NAME,LAST_NAME,REGION,EMAILADDRESS,PASSWORD);

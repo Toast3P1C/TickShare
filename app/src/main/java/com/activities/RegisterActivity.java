@@ -21,6 +21,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText inputName, inputLastName, inputRegion,
             inputEmailAddress, inputPassword, inputConfirmPassword;
 
+    private AlertDialog dialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,7 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void showErrorAlert() {
-        new AlertDialog.Builder(this)
+       dialog = new AlertDialog.Builder(this)
                 .setTitle("Register")
                 .setMessage("Could not create your account please check your entries: " + MainActivity.userManager.getErrorMap().values().toString())
 
@@ -79,6 +80,9 @@ public class RegisterActivity extends AppCompatActivity {
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
 
+    }
+    public AlertDialog getAlertDialog(){
+        return dialog;
     }
 
 

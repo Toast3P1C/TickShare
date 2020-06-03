@@ -107,7 +107,7 @@ private Date date;
     }
 
     /**
-     * this test will always fail because of the internal timers thats why its ignored
+     * this test will always fail because of the internal timers
      * The data types are the same
      */
     @Test
