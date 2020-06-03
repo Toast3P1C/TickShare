@@ -39,7 +39,8 @@ public class TripManager implements ITripManager {
     public boolean createTrip(String startingLocation, String destination, String startingTime, String seatsLeft, String userToken) {
         if (checkTripValues(startingLocation, destination, startingTime, seatsLeft, userToken)) {
             ITrip trip = new Trip(startingLocation, destination, startingTime, seatsLeft, userToken);
-            if (tripList.add(trip) && sendTripToServer(trip)) {
+            if (tripList.add(trip)) {
+                return true;
             } else {
                 return false;
             }
@@ -87,6 +88,11 @@ public class TripManager implements ITripManager {
             return false;
         }
     }
+//TODO: Method stub
+    @Override
+    public boolean deleteTrip(long id) {
+        return false;
+    }
 
     private ITrip setNewTripValues(long id, String startingLocation, String destination, String startingTime, String seatsLeft) {
         Trip trip = (Trip) getTripFromServer(id);
@@ -122,7 +128,7 @@ public class TripManager implements ITripManager {
     }
 
 
-     boolean sendTripToServer(ITrip trip) {
+    public boolean sendTripToServer(ITrip trip) {
         final boolean[] success = {false};
         networkManager.post("/trip", setParamsForRequest(trip), new JsonHttpResponseHandler() {
             @Override
@@ -142,36 +148,43 @@ public class TripManager implements ITripManager {
 
     private boolean checkTripValues(String startingLocation, String destination, String startingTime, String seatsLeft, String userToken) {
         Date date = null;
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constants.DATEFORMAT);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constants.DATE_FORMAT);
+        if(startingTime == null || startingTime.isEmpty()){
+            errorMap.put(new Object() {
+            }.getClass().getEnclosingMethod().getName(),"Starting Time is null or empty! ");
+            LOG.error("Time is empty or null");
+            return false;
+        }
         try {
             date = simpleDateFormat.parse(startingTime);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        if (startingLocation.isEmpty() || startingLocation == null) {
+        if (startingLocation == null || startingLocation.isEmpty()) {
             errorMap.put(new Object() {
             }.getClass().getEnclosingMethod().getName(), "starting Location can not be empty");
             LOG.error("starting Location is empty or null");
             return false;
         }
-        if (destination.isEmpty() || destination == null) {
+        if ( destination == null ||destination.isEmpty() ) {
             errorMap.put(new Object() {
             }.getClass().getEnclosingMethod().getName(), "Destination can not be empty");
             LOG.error("starting Location is empty or null");
             return false;
         }
-        if (date == null) {
+        if (date == null || startingTime.isEmpty()) {
             errorMap.put(new Object() {
             }.getClass().getEnclosingMethod().getName(), "Date cant be empty or in the past");
             LOG.error("Date is null or in the past");
             return false;
         }
-        if (seatsLeft == null || Integer.parseInt(seatsLeft) < 0) {
+        if (seatsLeft == null || seatsLeft.isEmpty() || Integer.parseInt(seatsLeft) < 0) {
             errorMap.put(new Object() {
             }.getClass().getEnclosingMethod().getName(), "Seats must be a value >= 0");
             LOG.error("Seats left is null or smaller then zero");
+            return false;
         }
-        if (userToken.isEmpty() || userToken == null) {
+        if (userToken == null || userToken.isEmpty()) {
             LOG.error("User Token is null or empty");
             return false;
         }

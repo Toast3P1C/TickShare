@@ -4,7 +4,7 @@ import com.model.ITrip;
 
 public interface ITripManager {
     /**
-     * Creates a trip and sends it directly to the RESTful Webservice
+     * Creates a trip and stores it temporary on the device
      * @param startingLocation String which represents the name of the Station you start
      * @param destination String which represents the name of the final station
      * @param startingTime String which holds the departure time
@@ -33,4 +33,6 @@ public interface ITripManager {
      * @return is true if everything went well :)
      */
     public boolean updateTrip(long id,String startingLocation, String destination, String startingTime, String seatsLeft);
+
+    public boolean deleteTrip(long id);
 }

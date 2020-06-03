@@ -12,18 +12,20 @@ public class NetworkManager implements INetworkManager {
 
     @Override
     public void get (String url, RequestParams params, AsyncHttpResponseHandler responseHandler){
-        client.get(getAbsoluteUrl(url), params, responseHandler);
+        client.get(url, params, responseHandler);
     }
     @Override
     public void post(String url, RequestParams params, AsyncHttpResponseHandler responseHandler){
-        client.post(getAbsoluteUrl(url),params,responseHandler);
+        client.post(url,params,responseHandler);
     }
     @Override
     public void put(String url, RequestParams params, AsyncHttpResponseHandler responseHandler){
-        client.put(getAbsoluteUrl(url),params,responseHandler);
+        client.put(url,params,responseHandler);
     }
 
-    private static String getAbsoluteUrl(String relativeUrl) {
-        return Constants.BASE_URL + relativeUrl;
+    public void delete(String url,RequestParams params,AsyncHttpResponseHandler responseHandler){
+        client.delete(url,params,responseHandler);
     }
+
+
 }

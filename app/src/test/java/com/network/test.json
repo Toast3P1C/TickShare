@@ -1,0 +1,8 @@
+{
+  "id": 1,
+  "startingLocation": "Test",
+  "destination": "test",
+  "startingTime": "2020-06-02T09:26:04.643+0000",
+  "seatsLeft": 4,
+  "userToken": "Token"
+}

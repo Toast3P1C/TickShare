@@ -117,4 +117,5 @@ public class UserTest {
     public void getEmailAddressNull() {
         assertFalse(user.getEmailAddress().equals(null));
     }
+
 }

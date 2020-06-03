@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void test() {
         long millis = System.currentTimeMillis();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constants.DATEFORMAT);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constants.DATE_FORMAT);
         Date date = new Date(millis);
         Date date1 = new Date(System.currentTimeMillis()+100);
         System.out.println(tripManager.createTrip("Berlin","Hamburg",simpleDateFormat.format(date),"3","TestToken"));

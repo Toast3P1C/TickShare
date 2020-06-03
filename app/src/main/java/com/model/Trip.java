@@ -83,7 +83,7 @@ public class Trip implements ITrip {
     @Override
     public Date getStartingTimeAsDate() {
         Date date = null;
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constants.DATEFORMAT);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constants.DATE_FORMAT);
         try {
             date = simpleDateFormat.parse(startingTime);
         } catch (ParseException e) {

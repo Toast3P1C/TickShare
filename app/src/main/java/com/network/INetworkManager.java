@@ -18,7 +18,7 @@ public interface INetworkManager {
     /**
      * Http get Request
      * note that the params must be provided as string because of the way the "AsyncHttpClient" api works
-     * @param url just the extension for : "http://10.0.2.2:8080/" I.e. /trips gets u all trips stored at the server
+     * @param url  "http://10.0.2.2:8080/" for localhost
      * @param params can be null
      * @param responseHandler
      */
@@ -27,7 +27,7 @@ public interface INetworkManager {
     /**
      * Http post request
      * note that the params must be provided as string because of the way the "AsyncHttpClient" api works
-     * @param url same as get
+     * @param url see available extensions
      * @param params
      * @param responseHandler
      */
@@ -36,9 +36,17 @@ public interface INetworkManager {
     /**
      * Http put
      * note that the params must be provided as string because of the way the "AsyncHttpClient" api works
-     * @param url same as post
+     * @param url see available extensions
      * @param params
      * @param responseHandler
      */
     public void put(String url, RequestParams params, AsyncHttpResponseHandler responseHandler);
+
+    /**
+     * Http delete
+     * @param url see available extensions
+     * @param params can be null
+     * @param responseHandler
+     */
+    public void delete(String url,RequestParams params,AsyncHttpResponseHandler responseHandler);
 }
