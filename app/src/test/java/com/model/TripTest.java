@@ -106,6 +106,7 @@ private Date date;
         assertEquals("TestToken123",localTrip.getUserToken());
     }
 
+
     /**
      * this test will always fail because of the internal timers
      * The data types are the same

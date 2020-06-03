@@ -34,5 +34,10 @@ public interface ITripManager {
      */
     public boolean updateTrip(long id,String startingLocation, String destination, String startingTime, String seatsLeft);
 
+    /**
+     * Method for deleting an Trip from the server, returns true if the trip is deleted
+     * @param id id of the trip
+     * @return
+     */
     public boolean deleteTrip(long id);
 }

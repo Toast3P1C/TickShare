@@ -1,6 +1,5 @@
 package com.network;
 
-import com.authentication.Constants;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;

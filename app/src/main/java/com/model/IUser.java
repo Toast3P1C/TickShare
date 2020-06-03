@@ -28,7 +28,7 @@ public interface IUser {
     public String getEmailAddress();
 
     /**
-     * returns an unique token for identifying a user as string
+     * returns an unique string token for identifying a user
      * @return
      */
     public String getToken();
