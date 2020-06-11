@@ -36,16 +36,25 @@ public class TripManager implements ITripManager {
         this.networkManager = new NetworkManager();
     }
 
-    public boolean createTrip(String startingLocation, String destination, String startingTime, String seatsLeft, String userToken) {
-        if (checkTripValues(startingLocation, destination, startingTime, seatsLeft, userToken)) {
+    public boolean createTripWithUserToken(String startingLocation, String destination, String startingTime, String seatsLeft, String userToken) {
+        if (checkTripValues(startingLocation, destination, startingTime, seatsLeft)) {
             ITrip trip = new Trip(startingLocation, destination, startingTime, seatsLeft, userToken);
-            if (tripList.add(trip)) {
-                return true;
-            } else {
-                return false;
-            }
+            return tripList.add(trip);
+        } else {
+            LOG.error("Could not add Trip ");
+            return false;
         }
-        return false;
+    }
+
+    @Override
+    public boolean createTripWithoutUserToken(String startingLocation, String destination, String startingTime, String seatsLeft) {
+        if (checkTripValues(startingLocation, destination, startingTime, seatsLeft)) {
+            ITrip trip = new Trip(startingLocation, destination, startingTime, seatsLeft);
+            return tripList.add(trip);
+        } else {
+            LOG.error("Could not add Trip ");
+            return false;
+        }
     }
 
     @Override
@@ -88,7 +97,8 @@ public class TripManager implements ITripManager {
             return false;
         }
     }
-//TODO: Method stub
+
+    //TODO: Method stub
     @Override
     public boolean deleteTrip(long id) {
         return false;
@@ -146,12 +156,12 @@ public class TripManager implements ITripManager {
     }
 
 
-    private boolean checkTripValues(String startingLocation, String destination, String startingTime, String seatsLeft, String userToken) {
+    private boolean checkTripValues(String startingLocation, String destination, String startingTime, String seatsLeft) {
         Date date = null;
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constants.DATE_FORMAT);
-        if(startingTime == null || startingTime.isEmpty()){
+        if (startingTime == null || startingTime.isEmpty()) {
             errorMap.put(new Object() {
-            }.getClass().getEnclosingMethod().getName(),"Starting Time is null or empty! ");
+            }.getClass().getEnclosingMethod().getName(), "Starting Time is null or empty! ");
             LOG.error("Time is empty or null");
             return false;
         }
@@ -166,7 +176,7 @@ public class TripManager implements ITripManager {
             LOG.error("starting Location is empty or null");
             return false;
         }
-        if ( destination == null ||destination.isEmpty() ) {
+        if (destination == null || destination.isEmpty()) {
             errorMap.put(new Object() {
             }.getClass().getEnclosingMethod().getName(), "Destination can not be empty");
             LOG.error("starting Location is empty or null");
@@ -184,11 +194,13 @@ public class TripManager implements ITripManager {
             LOG.error("Seats left is null or smaller then zero");
             return false;
         }
-        if (userToken == null || userToken.isEmpty()) {
-            LOG.error("User Token is null or empty");
-            return false;
-        }
         return true;
     }
+
+    public Map<String, String> getErrorMap() {
+        return errorMap;
+    }
+
+    ;
 
 }

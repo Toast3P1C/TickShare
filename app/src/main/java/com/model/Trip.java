@@ -50,6 +50,20 @@ public class Trip implements ITrip {
         this.userToken = userToken;
     }
 
+    /**
+     * Erstellung der der Trip Objekte in der App ohne dass ein User eingeloggt sein muss
+     * @param startingLocation
+     * @param destination
+     * @param startingTime
+     * @param seatsLeft
+     */
+    public Trip(String startingLocation, String destination, String startingTime, String seatsLeft){
+        this.startingLocation = startingLocation;
+        this.destination = destination;
+        this.startingTime = startingTime;
+        this.seatsLeft = seatsLeft;
+    }
+
     public long getId() {
         return id;
     }

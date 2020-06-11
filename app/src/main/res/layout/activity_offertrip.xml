@@ -13,7 +13,7 @@
         android:background="@drawable/backgroundboxshape"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.641"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -83,10 +83,11 @@
         android:id="@+id/buttonNow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/roundbutton"
         android:backgroundTint="@color/white"
+        android:onClick="onDateNowClick"
         android:text="@string/buttonNow"
         app:layout_constraintStart_toStartOf="@+id/backgroundOfferATrip"
         app:layout_constraintTop_toBottomOf="@+id/editTextWhenDoYOuStart" />
@@ -99,21 +100,12 @@
         android:layout_marginTop="28dp"
         android:background="@drawable/roundbutton"
         android:backgroundTint="@color/white"
+        android:onClick="onDateClick"
         android:text="@string/buttonDate"
         app:layout_constraintEnd_toEndOf="@+id/backgroundOfferATrip"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.071"
         app:layout_constraintStart_toEndOf="@+id/buttonNow"
         app:layout_constraintTop_toBottomOf="@+id/editTextWhenDoYOuStart" />
-
-    <ImageView
-        android:id="@+id/imageViewCalender"
-        android:layout_width="50dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintEnd_toEndOf="@+id/backgroundOfferATrip"
-        app:layout_constraintStart_toEndOf="@+id/buttonDate"
-        app:layout_constraintTop_toBottomOf="@+id/editTextWhenDoYOuStart"
-        app:srcCompat="@drawable/calender" />
 
     <TextView
         android:id="@+id/textViewHowmanySeatsLeft"
@@ -158,6 +150,7 @@
         android:layout_height="48dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/roundbutton"
+        android:onClick="onOfferNow"
         android:text="@string/buttonOfferNow"
         app:layout_constraintBottom_toBottomOf="@+id/backgroundOfferATrip"
         app:layout_constraintEnd_toEndOf="@+id/backgroundOfferATrip"
@@ -174,5 +167,18 @@
         app:layout_constraintEnd_toEndOf="@+id/backgroundOfferATrip"
         app:layout_constraintStart_toStartOf="@+id/backgroundOfferATrip"
         app:layout_constraintTop_toBottomOf="@+id/editTextWhereDouYouStart" />
+
+    <Button
+        android:id="@+id/buttonTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/roundbutton"
+        android:backgroundTint="#FFFFFF"
+        android:onClick="onTimeClick"
+        android:text="@string/buttonTime"
+        app:layout_constraintStart_toEndOf="@+id/buttonDate"
+        app:layout_constraintTop_toBottomOf="@+id/editTextWhenDoYOuStart" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

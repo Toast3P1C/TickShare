@@ -1,7 +1,6 @@
 package com.management;
 
 import com.authentication.Constants;
-import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.model.ITrip;
 import com.model.Trip;
 import com.network.INetworkManager;
@@ -10,9 +9,6 @@ import com.network.NetworkManager;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.mockito.ArgumentMatcher;
-import org.mockito.ArgumentMatchers;
-import org.mockito.InjectMocks;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,8 +16,6 @@ import java.util.Date;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-import static org.mockito.ArgumentMatchers.*;
 
 
 public class TripManagerTest {
@@ -43,47 +37,47 @@ public class TripManagerTest {
     }
     @Test
     public void createTripUseCase(){
-        assertTrue(tripManager.createTrip(startingLocation,destination,stringTime,seatLeft,userToken));
+        assertTrue(tripManager.createTripWithUserToken(startingLocation,destination,stringTime,seatLeft,userToken));
     }
     @Test
     public void createTripStartingLocationIsEmpty(){
-        assertFalse(tripManager.createTrip("",destination,stringTime,seatLeft,userToken));
+        assertFalse(tripManager.createTripWithUserToken("",destination,stringTime,seatLeft,userToken));
     }
     @Test
     public void createTripStartingLocationIsNull(){
-        assertFalse(tripManager.createTrip(null,destination,stringTime,seatLeft,userToken));
+        assertFalse(tripManager.createTripWithUserToken(null,destination,stringTime,seatLeft,userToken));
     }
     @Test
     public void createTripdestinationIsEmpty(){
-        assertFalse(tripManager.createTrip(startingLocation,"",stringTime,seatLeft,userToken));
+        assertFalse(tripManager.createTripWithUserToken(startingLocation,"",stringTime,seatLeft,userToken));
     }
     @Test
     public void createTripDestinationIsNull(){
-        assertFalse(tripManager.createTrip(startingLocation,null,stringTime,seatLeft,userToken));
+        assertFalse(tripManager.createTripWithUserToken(startingLocation,null,stringTime,seatLeft,userToken));
     }
     @Test
     public void createTripStartingTimeIsEmpty(){
-        assertFalse(tripManager.createTrip(startingLocation,destination,"",seatLeft,userToken));
+        assertFalse(tripManager.createTripWithUserToken(startingLocation,destination,"",seatLeft,userToken));
     }
     @Test
     public void createTripStartingTimeIsNull(){
-        assertFalse(tripManager.createTrip(startingLocation,destination,null,seatLeft,userToken));
+        assertFalse(tripManager.createTripWithUserToken(startingLocation,destination,null,seatLeft,userToken));
     }
     @Test
     public void createTripSeatsLeftIsEmpty(){
-        assertFalse(tripManager.createTrip(startingLocation,destination,stringTime,"",userToken));
+        assertFalse(tripManager.createTripWithUserToken(startingLocation,destination,stringTime,"",userToken));
     }
     @Test
     public void createTripSeatsLeftIsNull(){
-        assertFalse(tripManager.createTrip(startingLocation,destination,stringTime,null,userToken));
+        assertFalse(tripManager.createTripWithUserToken(startingLocation,destination,stringTime,null,userToken));
     }
     @Test
     public void createTripUserTokenIsEmpty(){
-        assertFalse(tripManager.createTrip(startingLocation,destination,stringTime,seatLeft,""));
+        assertFalse(tripManager.createTripWithUserToken(startingLocation,destination,stringTime,seatLeft,""));
     }
     @Test
     public void createTripUserTokenIsNull(){
-        assertFalse(tripManager.createTrip(startingLocation,destination,stringTime,seatLeft,null));
+        assertFalse(tripManager.createTripWithUserToken(startingLocation,destination,stringTime,seatLeft,null));
     }
 
     @Test

@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constants.DATE_FORMAT);
         Date date = new Date(millis);
         Date date1 = new Date(System.currentTimeMillis()+100);
-        System.out.println(tripManager.createTrip("Berlin","Hamburg",simpleDateFormat.format(date),"3","TestToken"));
+        System.out.println(tripManager.createTripWithUserToken("Berlin","Hamburg",simpleDateFormat.format(date),"3","TestToken"));
         System.out.println(tripManager.getTripFromServer(1));
         System.out.println(tripManager.updateTrip(1,"Hamburg","Berlin",date1.toString(),"1"));
 

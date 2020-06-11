@@ -59,7 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void showSuccessAlert() {
-        Toast.makeText(getApplicationContext(), Constants.SUCCESS,Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), Constants.ACCOUNT_SUCCESS,Toast.LENGTH_LONG).show();
     }
 
     private void showErrorAlert() {

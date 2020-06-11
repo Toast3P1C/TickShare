@@ -2,6 +2,8 @@ package com.management;
 
 import com.model.ITrip;
 
+import java.util.Map;
+
 public interface ITripManager {
     /**
      * Creates a trip and stores it temporary on the device
@@ -12,7 +14,17 @@ public interface ITripManager {
      * @param userToken unique token for identifying users
      * @return
      */
-    public boolean createTrip(String startingLocation, String destination, String startingTime, String seatsLeft, String userToken);
+    public boolean createTripWithUserToken(String startingLocation, String destination, String startingTime, String seatsLeft, String userToken);
+
+    /**
+     * Creates a trip for an non logged in user
+     * @param startingLocation
+     * @param destination
+     * @param startingTime
+     * @param seatsLeft
+     * @return
+     */
+    public boolean createTripWithoutUserToken(String startingLocation, String destination, String startingTime, String seatsLeft);
 
     /**
      * Returns an Trip object provided by the server
@@ -40,4 +52,10 @@ public interface ITripManager {
      * @return
      */
     public boolean deleteTrip(long id);
+
+    /**
+     * Returns the location and description of an error
+     * @return
+     */
+    public Map<String,String> getErrorMap();
 }
