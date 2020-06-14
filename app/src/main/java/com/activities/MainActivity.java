@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         userManager = new UserManager();
         networkManager = new NetworkManager();
         tripManager = new TripManager();
-
+        test();
         //userManager.createUser("Paul","Wüsthoff","Berlin","paul.tester@test.test","test1234");
 
         setContentView(R.layout.activity_main);
@@ -66,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
         Date date = new Date(millis);
         Date date1 = new Date(System.currentTimeMillis()+100);
         System.out.println(tripManager.createTripWithUserToken("Berlin","Hamburg",simpleDateFormat.format(date),"3","TestToken"));
-        System.out.println(tripManager.getTripFromServer(1));
-        System.out.println(tripManager.updateTrip(1,"Hamburg","Berlin",date1.toString(),"1"));
+        //System.out.println(tripManager.getTripsFromServer(Constants.BASE_URL+"/trips"));
+        // System.out.println(tripManager.updateTrip(1,"Hamburg","Berlin",date1.toString(),"1"));
 
 
     }

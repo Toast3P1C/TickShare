@@ -2,6 +2,9 @@ package com.network;
 
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.model.ITrip;
+
+import java.util.List;
 
 
 public interface INetworkManager {
@@ -16,37 +19,35 @@ public interface INetworkManager {
 
 
     /**
-     * Http get Request
-     * note that the params must be provided as string because of the way the "AsyncHttpClient" api works
-     * @param url  "http://10.0.2.2:8080/" for localhost
-     * @param params can be null
-     * @param responseHandler
+     * Returns a String of values from the server
+     * @param uri "http://10.0.2.2:8080/"(for localhost) + extension
+     * @return
      */
-    public void get(String url, RequestParams params, AsyncHttpResponseHandler responseHandler);
+    public List<ITrip> get(String uri);
 
     /**
-     * Http post request
-     * note that the params must be provided as string because of the way the "AsyncHttpClient" api works
-     * @param url see available extensions
-     * @param params
-     * @param responseHandler
+     * Http post
+     * posts an object to the desired server
+     * @param uri "http://10.0.2.2:8080/"(for localhost) + extension
+     * @param o the object you want to write, check if server can handle your object
+     * @return returns true if servers sends back 200
      */
-    public void post(String url, RequestParams params, AsyncHttpResponseHandler responseHandler);
+    public boolean post(String uri, Object o);
 
     /**
      * Http put
-     * note that the params must be provided as string because of the way the "AsyncHttpClient" api works
-     * @param url see available extensions
-     * @param params
-     * @param responseHandler
+     * replaces an existing object at the server with the modified one
+     * @param url "http://10.0.2.2:8080/"(for localhost) + extension
+     * @param o the modified object you want to write, check if server can handle your object
+     * @return returns true if servers sends back 200
      */
-    public void put(String url, RequestParams params, AsyncHttpResponseHandler responseHandler);
+    public boolean put(String url, Object o);
+
 
     /**
-     * Http delete
-     * @param url see available extensions
-     * @param params can be null
-     * @param responseHandler
+     * Deletes the object via its ID
+     * @param uri "http://10.0.2.2:8080/"(for localhost) + extension
+     * @return returns true if servers sends back 200
      */
-    public void delete(String url,RequestParams params,AsyncHttpResponseHandler responseHandler);
+    public boolean delete(String uri);
 }

@@ -57,6 +57,7 @@ public class OfferATripActivity extends AppCompatActivity {
         } else {
             if (MainActivity.tripManager.createTripWithoutUserToken(startingLocationString, destinationString,
                     startingTimeString, seatsLeftString)) {
+                MainActivity.tripManager.sendTripToServer(MainActivity.tripManager.getTripList().get(0));
                 showSuccessAlert();
                 finish();
             } else {

@@ -2,6 +2,7 @@ package com.management;
 
 import com.model.ITrip;
 
+import java.util.List;
 import java.util.Map;
 
 public interface ITripManager {
@@ -29,14 +30,21 @@ public interface ITripManager {
     /**
      * Returns an Trip object provided by the server
      * can be null if the trip does not exist
+     * @return
+     */
+    public List<ITrip> getTripsFromServer(String uri);
+
+    /**
+     * Returns an Trip object provided by the server
+     * can be null if the trip does not exist
      * @param id
      * @return
      */
-    public ITrip getTripFromServer(long id);
-
+    public ITrip getTripFromServer(String uri, long id);
     /**
      * Method for updating an trip. It firstly gets the trip from the server and then updates
      * all fields you want to update
+     * @param uri the uri to the server plus extension
      * @param id of the trip you want to update
      * @param startingLocation see above
      * @param destination see above
@@ -44,7 +52,7 @@ public interface ITripManager {
      * @param seatsLeft see above
      * @return is true if everything went well :)
      */
-    public boolean updateTrip(long id,String startingLocation, String destination, String startingTime, String seatsLeft);
+    public boolean updateTrip(String uri, long id,String startingLocation, String destination, String startingTime, String seatsLeft);
 
     /**
      * Method for deleting an Trip from the server, returns true if the trip is deleted
@@ -58,4 +66,8 @@ public interface ITripManager {
      * @return
      */
     public Map<String,String> getErrorMap();
+
+    public boolean sendTripToServer(ITrip trip);
+
+    public List<ITrip> getTripList();
 }

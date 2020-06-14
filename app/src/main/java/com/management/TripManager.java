@@ -1,9 +1,6 @@
 package com.management;
 
 import com.authentication.Constants;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.model.ITrip;
 import com.model.Trip;
@@ -12,7 +9,6 @@ import com.network.NetworkManager;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,8 +17,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import cz.msebera.android.httpclient.Header;
 
 public class TripManager implements ITripManager {
     private final static Logger LOG = LogManager.getLogger(TripManager.class);
@@ -58,54 +52,34 @@ public class TripManager implements ITripManager {
     }
 
     @Override
-    public ITrip getTripFromServer(long id) {
-        final ITrip[] trip = {null};
-        networkManager.get("trip/" + id, null, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                ObjectMapper objectMapper = new ObjectMapper();
-                try {
-                    System.out.println(objectMapper.readValue(response.toString(), Trip.class));
-                    trip[0] = objectMapper.readValue(response.toString(), Trip.class);
-                } catch (JsonProcessingException e) {
-                    LOG.error("Error parsing Json", e);
-                }
-            }
-        });
-        return trip[0];
+    public List<ITrip> getTripsFromServer(String uri) {
+        List<ITrip> response = networkManager.get(uri);
+        return response;
+
     }
 
     @Override
-    public boolean updateTrip(long id, String startingLocation, String destination, String startingTime, String seatsLeft) {
-        final boolean success[] = {false};
-        ITrip trip = setNewTripValues(id, startingLocation, destination, startingTime, seatsLeft);
-        if (trip != null) {
-            networkManager.put("trip/" + id, setParamsForRequest(trip), new JsonHttpResponseHandler() {
-
-                @Override
-                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                    if (statusCode >= 200 && statusCode <= 300) {
-                        success[0] = true;
-                    } else {
-                        success[0] = false;
-                        LOG.error("error while updating trip, statuscode: ", statusCode);
-                    }
-                }
-            });
-            return success[0];
-        } else {
-            return false;
-        }
+    public ITrip getTripFromServer(String uri, long id) {
+        List<ITrip> response = networkManager.get(uri + id);
+        return response.get(0);
     }
 
-    //TODO: Method stub
+
+    @Override
+    public boolean updateTrip(String uri, long id, String startingLocation, String destination, String startingTime, String seatsLeft) {
+        networkManager.put(uri+"/trip"+id,setNewTripValues(id,startingLocation,destination,startingTime,seatsLeft));
+        return false;
+    }
+
     @Override
     public boolean deleteTrip(long id) {
         return false;
     }
 
+
     private ITrip setNewTripValues(long id, String startingLocation, String destination, String startingTime, String seatsLeft) {
-        Trip trip = (Trip) getTripFromServer(id);
+        List<ITrip> tripList = networkManager.get(Constants.BASE_URL+"/trip/"+id);
+        Trip trip = (Trip) tripList.get(0);
         if (trip != null) {
             if (!startingLocation.isEmpty() && startingLocation != null) {
                 trip.setStartingLocation(startingLocation);
@@ -126,33 +100,25 @@ public class TripManager implements ITripManager {
         return trip;
     }
 
+    /**
+     * Sends an empty usertoken if no one is logged in
+     *
+     * @param trip
+     * @return
+     */
     private RequestParams setParamsForRequest(ITrip trip) {
+        String userToken = "";
+        if (trip.getUserToken() != "" && !trip.getUserToken().isEmpty() && trip.getUserToken() != null) {
+            userToken = trip.getUserToken();
+        }
         RequestParams params = new RequestParams();
         params.add("startingLocation", trip.getStartingLocation());
         params.add("destination", trip.getDestination());
         params.add("startingTime", trip.getStartingTime());
         params.add("seatsLeft", trip.getSeatsLeft());
-        params.add("userToken", trip.getUserToken());
+        params.add("userToken", userToken);
         params.setUseJsonStreamer(true);
         return params;
-    }
-
-
-    public boolean sendTripToServer(ITrip trip) {
-        final boolean[] success = {false};
-        networkManager.post("/trip", setParamsForRequest(trip), new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                if (statusCode >= 200 && statusCode <= 300) {
-                    success[0] = true;
-                } else {
-                    success[0] = false;
-                    LOG.error("error while posting trip, statuscode = ", statusCode);
-                }
-
-            }
-        });
-        return success[0];
     }
 
 
@@ -201,6 +167,13 @@ public class TripManager implements ITripManager {
         return errorMap;
     }
 
-    ;
+    @Override
+    public boolean sendTripToServer(ITrip trip) {
+        return false;
+    }
+
+    public List<ITrip> getTripList() {
+        return tripList;
+    }
 
 }
