@@ -67,7 +67,7 @@ public interface ITripManager {
      */
     public Map<String,String> getErrorMap();
 
-    public boolean sendTripToServer(ITrip trip);
+    public boolean sendTripToServer(String uri, ITrip trip);
 
     public List<ITrip> getTripList();
 }

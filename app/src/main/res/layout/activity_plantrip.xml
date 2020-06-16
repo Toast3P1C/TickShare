@@ -16,7 +16,7 @@
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.68" />
+        app:layout_constraintVertical_bias="0.69" />
 
     <TextView
         android:id="@+id/textViewHeadline"
@@ -109,12 +109,12 @@
         android:id="@+id/buttonNow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/roundbutton"
         android:backgroundTint="@color/white"
+        android:onClick="onDateNowClick"
         android:text="@string/buttonNow"
-        app:layout_constraintEnd_toEndOf="@+id/backgroundPlanTrip"
-        app:layout_constraintHorizontal_bias="0.239"
         app:layout_constraintStart_toStartOf="@+id/backgroundPlanTrip"
         app:layout_constraintTop_toBottomOf="@+id/editTextWhenDoYouWantToGo" />
 
@@ -123,24 +123,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="120dp"
         android:background="@drawable/roundbutton"
         android:backgroundTint="@color/white"
+        android:onClick="onDateClick"
         android:text="@string/buttonDate"
         app:layout_constraintEnd_toEndOf="@+id/backgroundPlanTrip"
-        app:layout_constraintHorizontal_bias="0.135"
         app:layout_constraintStart_toEndOf="@+id/buttonNow"
         app:layout_constraintTop_toBottomOf="@+id/editTextWhenDoYouWantToGo" />
 
-    <ImageView
-        android:id="@+id/imageViewCalender"
-        android:layout_width="54dp"
-        android:layout_height="52dp"
+    <Button
+        android:id="@+id/buttonTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/roundbutton"
+        android:backgroundTint="@color/white"
+        android:onClick="onTimeClick"
+        android:text="@string/buttonTime"
         app:layout_constraintEnd_toEndOf="@+id/backgroundPlanTrip"
-        app:layout_constraintHorizontal_bias="0.206"
         app:layout_constraintStart_toEndOf="@+id/buttonDate"
-        app:layout_constraintTop_toBottomOf="@+id/editTextWhenDoYouWantToGo"
-        app:srcCompat="@drawable/calender" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextWhenDoYouWantToGo" />
 
     <Button
         android:id="@+id/button"
@@ -148,6 +152,7 @@
         android:layout_height="43dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/roundbutton"
+        android:onClick="onButtonSearchClick"
         android:text="@string/buttonSearch"
         app:layout_constraintBottom_toBottomOf="@+id/backgroundPlanTrip"
         app:layout_constraintEnd_toEndOf="@+id/backgroundPlanTrip"

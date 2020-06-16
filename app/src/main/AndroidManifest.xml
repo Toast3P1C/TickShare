@@ -20,6 +20,7 @@
         <activity android:name="com.activities.UserLoginActivity"></activity>
         <activity android:name="com.activities.PlanYourTripActivity"></activity>
         <activity android:name="com.activities.OfferATripActivity"></activity>
+        <activity android:name="com.activities.ShowTripsActivity"></activity>
         <uses-library android:name="org.apache.http.legacy" android:required="false" />
     </application>
 

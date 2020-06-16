@@ -168,8 +168,8 @@ public class TripManager implements ITripManager {
     }
 
     @Override
-    public boolean sendTripToServer(ITrip trip) {
-        return false;
+    public boolean sendTripToServer(String uri, ITrip trip) {
+        return networkManager.post(uri,trip);
     }
 
     public List<ITrip> getTripList() {

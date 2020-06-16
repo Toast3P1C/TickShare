@@ -3,7 +3,9 @@ package com.activities;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -14,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.authentication.Constants;
+import com.model.ITrip;
 import com.tickshare.R;
 
 import java.text.SimpleDateFormat;
@@ -32,7 +35,9 @@ public class OfferATripActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_offertrip);
-        initaliseEditTexts();
+        initialiseEditTexts();
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
     }
 
     public void onOfferNow(View view) {
@@ -48,6 +53,8 @@ public class OfferATripActivity extends AppCompatActivity {
         if (userToken != "" && !userToken.isEmpty() && userToken != null) {
             if (MainActivity.tripManager.createTripWithUserToken(startingLocationString, destinationString,
                     startingTimeString, seatsLeftString, MainActivity.userManager.getUserList().get(0).getToken())) {
+                MainActivity.tripManager.sendTripToServer(Constants.BASE_URL+"/trip",MainActivity.tripManager.getTripList().get(0));
+                MainActivity.tripManager.getTripList().clear();
                 showSuccessAlert();
                 finish();
             } else {
@@ -57,7 +64,8 @@ public class OfferATripActivity extends AppCompatActivity {
         } else {
             if (MainActivity.tripManager.createTripWithoutUserToken(startingLocationString, destinationString,
                     startingTimeString, seatsLeftString)) {
-                MainActivity.tripManager.sendTripToServer(MainActivity.tripManager.getTripList().get(0));
+                MainActivity.tripManager.sendTripToServer(Constants.BASE_URL+"/trip",MainActivity.tripManager.getTripList().get(0));
+                MainActivity.tripManager.getTripList().clear();
                 showSuccessAlert();
                 finish();
             } else {
@@ -113,7 +121,7 @@ public class OfferATripActivity extends AppCompatActivity {
     }
 
 
-    private void initaliseEditTexts() {
+    private void initialiseEditTexts() {
         startingLocation = findViewById(R.id.editTextWhereDouYouStart);
         destination = findViewById(R.id.editTextWhereDoYouWantToGo);
         startingTime = findViewById(R.id.editTextWhenDoYOuStart);
