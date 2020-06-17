@@ -2,6 +2,7 @@ package com.activities;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -17,7 +18,6 @@ import com.model.ITrip;
 import com.tickshare.R;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -40,7 +40,7 @@ public class PlanYourTripActivity extends AppCompatActivity {
     }
 
     public void onButtonSearchClick(View view){
-        List<ITrip> possibleTrips = new ArrayList<>();
+
         String startingLocation = this.startingLocation.getEditableText().toString().trim();
         String destination = this.destination.getEditableText().toString().trim();
         String startingTime = this.startingTime.getEditableText().toString().trim();
@@ -48,10 +48,11 @@ public class PlanYourTripActivity extends AppCompatActivity {
 
         for(ITrip trip : tripList){
             if(trip.getStartingLocation().equals(startingLocation) && trip.getDestination().equals(destination)){
-                possibleTrips.add(trip);
+               MainActivity.tripManager.getTripList().add(trip);
             }
         }
-        System.out.println("Possible trips are: "+ possibleTrips.toString());
+        Intent intent = new Intent(this,ShowTripsActivity.class);
+        startActivity(intent);
     }
 
 

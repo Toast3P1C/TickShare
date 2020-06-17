@@ -46,10 +46,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void onLogin(View view){
-        Intent intent = new Intent(this,ShowTripsActivity.class);
+        Intent intent = new Intent(this,UserLoginActivity.class);
         startActivity(intent);
-//        Intent intent = new Intent(this,UserLoginActivity.class);
-//        startActivity(intent);
     }
 
     public void onPlanYourTrip(View view){
