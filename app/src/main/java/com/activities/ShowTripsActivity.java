@@ -1,7 +1,9 @@
 package com.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,35 +11,55 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.tickshare.R;
 
+import java.util.Arrays;
 
-public class ShowTripsActivity extends Activity {
+
+public class ShowTripsActivity extends Activity implements IOnTripClick {
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.Adapter tripsAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    public static int position = 0;
+    private String[] possibleTrips;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_triplistview);
-        recyclerView = (RecyclerView) findViewById(R.id.tripListRecyclerView);
-        String[] possibleTrips = new String[MainActivity.tripManager.getTripList().size()];
+        recyclerView = findViewById(R.id.tripListRecyclerView);
+        possibleTrips = new String[MainActivity.tripManager.getTripList().size()];
 
         for (int i = 0; i < MainActivity.tripManager.getTripList().size(); i++) {
             possibleTrips[i] = MainActivity.tripManager.getTripList().get(i).toString();
         }
 
-
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
         recyclerView.setHasFixedSize(true);
 
-        // use a linear layout manager
         layoutManager = new LinearLayoutManager(this);
+
         recyclerView.setLayoutManager(layoutManager);
 
-        // specify an adapter (see also next example)
-        mAdapter = new MyAdapter(possibleTrips);
-        recyclerView.setAdapter(mAdapter);
+        tripsAdapter = new MyAdapter(possibleTrips, this);
+
+        recyclerView.setAdapter(tripsAdapter);
+
+        recyclerView.setClickable(true);
+
+    }
+
+    @Override
+    public void onTripClick(int position) {
+        this.position = position;
+        Intent intent = new Intent(this, ShowSingleTripActivity.class);
+        startActivity(intent);
+    }
+
+    public void onButtonBackClick(View view) {
+        Intent intent = new Intent(this, PlanYourTripActivity.class);
+        startActivity(intent);
+        Arrays.fill(possibleTrips, null);
+        MainActivity.tripManager.getTripList().clear();
+        tripsAdapter.notifyItemRangeRemoved(0,possibleTrips.length);
+        finish();
     }
 }

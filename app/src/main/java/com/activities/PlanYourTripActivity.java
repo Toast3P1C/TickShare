@@ -28,6 +28,7 @@ public class PlanYourTripActivity extends AppCompatActivity {
     private EditText startingLocation, destination, startingTime;
     final Calendar calender = Calendar.getInstance();
 
+    private List<ITrip> tripList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,18 +36,20 @@ public class PlanYourTripActivity extends AppCompatActivity {
         setContentView(R.layout.activity_plantrip);
         initialiseEditTexts();
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-
         StrictMode.setThreadPolicy(policy);
+
     }
 
     public void onButtonSearchClick(View view){
-
+        this.tripList = MainActivity.networkManager.get(Constants.BASE_URL+"/trips");
         String startingLocation = this.startingLocation.getEditableText().toString().trim();
         String destination = this.destination.getEditableText().toString().trim();
-        String startingTime = this.startingTime.getEditableText().toString().trim();
-        List<ITrip> tripList = MainActivity.networkManager.get(Constants.BASE_URL+"/trips");
 
-        for(ITrip trip : tripList){
+        //TODO: Add startingtime check when searching for trips
+        String startingTime = this.startingTime.getEditableText().toString().trim();
+
+
+        for(ITrip trip : this.tripList){
             if(trip.getStartingLocation().equals(startingLocation) && trip.getDestination().equals(destination)){
                MainActivity.tripManager.getTripList().add(trip);
             }

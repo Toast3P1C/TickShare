@@ -28,12 +28,12 @@ public class UserLoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         textFieldEmail = findViewById(R.id.inputTextEmailAddressLogin);
         textFieldPassword = findViewById(R.id.inputTextPasswordLogin);
-       //MainActivity.userManager.createUser("Paul","Wüsthoff","Berlin","paulwpaul@web.de","1234567");
-        NetworkManager networkManager = new NetworkManager();
-        System.out.println(networkManager.get(Constants.BASE_URL+"/trips"));
-        System.out.println(MainActivity.tripManager.getTripList().get(0).toString());
-        System.out.println(networkManager.post(Constants.BASE_URL+"/trip",MainActivity.tripManager.getTripList().get(0)));
-        System.out.println(MainActivity.tripManager.getTripsFromServer(Constants.BASE_URL+"/trips").toString());
+//        MainActivity.userManager.createUser("Paul","Wüsthoff","Berlin","paulwpaul@web.de","1234567");
+//        NetworkManager networkManager = new NetworkManager();
+//        System.out.println(networkManager.get(Constants.BASE_URL+"/trips"));
+//        System.out.println(MainActivity.tripManager.getTripList().get(0).toString());
+//        System.out.println(networkManager.post(Constants.BASE_URL+"/trip",MainActivity.tripManager.getTripList().get(0)));
+//        System.out.println(MainActivity.tripManager.getTripsFromServer(Constants.BASE_URL+"/trips").toString());
     }
 
     public void onBack(View view){
