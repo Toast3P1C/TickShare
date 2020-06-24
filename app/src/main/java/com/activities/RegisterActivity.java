@@ -13,10 +13,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.authentication.Constants;
+import com.persistence.DBHelper;
 import com.tickshare.R;
 
 
 public class RegisterActivity extends AppCompatActivity {
+
+    private DBHelper dbHelper;
 
     private EditText inputName, inputLastName, inputRegion,
             inputEmailAddress, inputPassword, inputConfirmPassword;
@@ -29,6 +32,8 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         initaliseEditTexts();
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        dbHelper = new DBHelper(this);
+
     }
 
     public void onNextClick(View view) {
@@ -39,7 +44,8 @@ public class RegisterActivity extends AppCompatActivity {
         String password = inputPassword.getEditableText().toString().trim();
         String confirmPassword = inputConfirmPassword.getEditableText().toString().trim();
         if (password.equals(confirmPassword)) {
-            if (MainActivity.userManager.createUser(name, lastName, region, emailAddress, password)) {
+            if (MainActivity.userManager.createUser(name, lastName, region, emailAddress, password) &&
+                    dbHelper.addData(MainActivity.userManager.getUserFromEmail(emailAddress))) {
                 showSuccessAlert();
                 finish();
             } else {
@@ -59,11 +65,11 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void showSuccessAlert() {
-        Toast.makeText(getApplicationContext(), Constants.ACCOUNT_SUCCESS,Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), Constants.ACCOUNT_SUCCESS, Toast.LENGTH_LONG).show();
     }
 
     private void showErrorAlert() {
-       dialog = new AlertDialog.Builder(this)
+        dialog = new AlertDialog.Builder(this)
                 .setTitle("Register")
                 .setMessage("Could not create your account please check your entries: " + MainActivity.userManager.getErrorMap().values().toString())
 
@@ -81,7 +87,8 @@ public class RegisterActivity extends AppCompatActivity {
                 .show();
 
     }
-    public AlertDialog getAlertDialog(){
+
+    public AlertDialog getAlertDialog() {
         return dialog;
     }
 

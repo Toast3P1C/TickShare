@@ -46,10 +46,14 @@ public class UserManager implements IUserManager {
     }
 
     @Override
-    public boolean addContact(IUser user) { return contactList.add(user);}
+    public boolean addContact(IUser user) {
+        return contactList.add(user);
+    }
 
     @Override
-    public boolean deleteContact(IUser user) { return contactList.removeIf(u -> u.getToken().equals(user.getToken())); }
+    public boolean deleteContact(IUser user) {
+        return contactList.removeIf(u -> u.getToken().equals(user.getToken()));
+    }
 
     @Override
     public List<IUser> getUserList() {
@@ -98,6 +102,9 @@ public class UserManager implements IUserManager {
     }
 
     @Override
-    public Map<String, String> getErrorMap() { return errorMap; }
+    public Map<String, String> getErrorMap() {
+        return errorMap;
+    }
+
 
 }

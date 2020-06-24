@@ -36,4 +36,5 @@
     <string name="buttonTime">Time</string>
     <string name="availableTrips">Available Trips</string>
     <string name="buttonAcceptTrip">Accept offer</string>
+    <string name="buttonShowMap">Show Map</string>
 </resources>

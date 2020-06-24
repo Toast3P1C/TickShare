@@ -59,7 +59,12 @@ public class ShowTripsActivity extends Activity implements IOnTripClick {
         startActivity(intent);
         Arrays.fill(possibleTrips, null);
         MainActivity.tripManager.getTripList().clear();
-        tripsAdapter.notifyItemRangeRemoved(0,possibleTrips.length);
+        tripsAdapter.notifyItemRangeRemoved(0, possibleTrips.length);
         finish();
+    }
+
+    public void onButtonShowOnMapClick(View view) {
+        Intent intent = new Intent(this, MapViewActivity.class);
+        startActivity(intent);
     }
 }

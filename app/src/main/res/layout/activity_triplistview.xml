@@ -53,4 +53,17 @@
         app:layout_constraintHorizontal_bias="0.083"
         app:layout_constraintStart_toStartOf="@+id/backgroundShowtripList" />
 
+    <Button
+        android:id="@+id/buttonShowOnMap"
+        android:layout_width="118dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/roundbutton"
+        android:onClick="onButtonShowOnMapClick"
+        android:text="@string/buttonShowMap"
+        app:layout_constraintBottom_toBottomOf="@+id/backgroundShowtripList"
+        app:layout_constraintEnd_toEndOf="@+id/tripListRecyclerView"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/buttonAvailableTripsBack" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

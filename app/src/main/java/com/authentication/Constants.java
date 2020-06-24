@@ -10,5 +10,6 @@ public class Constants {
     public final static String DATE_FORMAT = "MMM dd,yyy HH:mm";
     public final static String ACCOUNT_SUCCESS = "Your account has been succsessfully registerd";
     public final static String TRIP_SUCCESS = "Your trip has been succsessfully created ";
+    public final static String MAPBOX_KEY = "pk.eyJ1IjoidG9hc3QzcDFjIiwiYSI6ImNrYnNkbzRlMjAwbTEycm1yZnZ0YWZ3bm8ifQ.u_adOsfsiT5aDHtl0B2p7Q";
 
 }
