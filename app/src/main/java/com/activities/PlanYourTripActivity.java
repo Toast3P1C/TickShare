@@ -50,7 +50,8 @@ public class PlanYourTripActivity extends AppCompatActivity {
 
 
         for(ITrip trip : this.tripList){
-            if(trip.getStartingLocation().equals(startingLocation) && trip.getDestination().equals(destination)){
+            if(trip.getStartingLocation().equals(startingLocation) && trip.getDestination().equals(destination)
+                    && Integer.valueOf(trip.getSeatsLeft()) > 0){
                MainActivity.tripManager.getTripList().add(trip);
             }
         }

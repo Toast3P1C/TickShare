@@ -123,6 +123,7 @@ public class Trip implements ITrip {
         this.startingTime = startingTime;
     }
 
+    @Override
     public void setSeatsLeft(String seatsLeft) {
         this.seatsLeft = seatsLeft;
     }

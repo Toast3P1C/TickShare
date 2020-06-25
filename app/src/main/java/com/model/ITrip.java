@@ -55,5 +55,11 @@ public interface ITrip {
      */
     public int getSeatsLeftAsInteger();
 
+    /**
+     * Sets the amount seats which are left
+     * @param seatsLeft
+     */
+    public void setSeatsLeft(String seatsLeft);
+
 
 }

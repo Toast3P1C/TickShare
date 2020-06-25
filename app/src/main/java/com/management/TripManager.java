@@ -100,27 +100,6 @@ public class TripManager implements ITripManager {
         return trip;
     }
 
-    /**
-     * Sends an empty usertoken if no one is logged in
-     *
-     * @param trip
-     * @return
-     */
-    private RequestParams setParamsForRequest(ITrip trip) {
-        String userToken = "";
-        if (trip.getUserToken() != "" && !trip.getUserToken().isEmpty() && trip.getUserToken() != null) {
-            userToken = trip.getUserToken();
-        }
-        RequestParams params = new RequestParams();
-        params.add("startingLocation", trip.getStartingLocation());
-        params.add("destination", trip.getDestination());
-        params.add("startingTime", trip.getStartingTime());
-        params.add("seatsLeft", trip.getSeatsLeft());
-        params.add("userToken", userToken);
-        params.setUseJsonStreamer(true);
-        return params;
-    }
-
 
     private boolean checkTripValues(String startingLocation, String destination, String startingTime, String seatsLeft) {
         Date date = null;
