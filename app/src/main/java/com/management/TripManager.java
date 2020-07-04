@@ -31,6 +31,9 @@ public class TripManager implements ITripManager {
     }
 
     public boolean createTripWithUserToken(String startingLocation, String destination, String startingTime, String seatsLeft, String userToken) {
+        if(userToken == null || userToken.isEmpty()){
+            return false;
+        }
         if (checkTripValues(startingLocation, destination, startingTime, seatsLeft)) {
             ITrip trip = new Trip(startingLocation, destination, startingTime, seatsLeft, userToken);
             return tripList.add(trip);
@@ -67,7 +70,7 @@ public class TripManager implements ITripManager {
 
     @Override
     public boolean updateTrip(String uri, long id, String startingLocation, String destination, String startingTime, String seatsLeft) {
-        networkManager.put(uri+"/trip"+id,setNewTripValues(id,startingLocation,destination,startingTime,seatsLeft));
+        networkManager.put(uri + "/trip" + id, setNewTripValues(id, startingLocation, destination, startingTime, seatsLeft));
         return false;
     }
 
@@ -78,7 +81,7 @@ public class TripManager implements ITripManager {
 
 
     private ITrip setNewTripValues(long id, String startingLocation, String destination, String startingTime, String seatsLeft) {
-        List<ITrip> tripList = networkManager.get(Constants.BASE_URL+"/trip/"+id);
+        List<ITrip> tripList = networkManager.get(Constants.BASE_URL + "/trip/" + id);
         Trip trip = (Trip) tripList.get(0);
         if (trip != null) {
             if (!startingLocation.isEmpty() && startingLocation != null) {
@@ -148,7 +151,7 @@ public class TripManager implements ITripManager {
 
     @Override
     public boolean sendTripToServer(String uri, ITrip trip) {
-        return networkManager.post(uri,trip);
+        return networkManager.post(uri, trip);
     }
 
     public List<ITrip> getTripList() {

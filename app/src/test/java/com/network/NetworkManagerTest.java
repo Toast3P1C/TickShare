@@ -1,87 +1,66 @@
 package com.network;
 
-import android.content.Context;
-
-import com.authentication.Constants;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.loopj.android.http.JsonHttpResponseHandler;
 import com.model.ITrip;
 import com.model.Trip;
 
-import org.apache.commons.io.IOUtils;
-import org.json.JSONObject;
-import org.junit.Ignore;
+import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.concurrent.CountDownLatch;
-
-import cz.msebera.android.httpclient.Header;
-import okhttp3.HttpUrl;
-import okhttp3.mockwebserver.MockResponse;
-import okhttp3.mockwebserver.MockWebServer;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class NetworkManagerTest {
 
+    INetworkManager networkManager;
+    ITrip trip;
+    @Before
+    public void setUp() {
+        trip = new Trip("Hamburg","Berlin","Now","3");
+        networkManager = Mockito.mock(NetworkManager.class);
+    }
 
     @Test
-    @Ignore
-    public void get() {
-    MockWebServer server = new MockWebServer();
-        final CountDownLatch signal = new CountDownLatch(1);
-        File file = new File("/Users/paul/StudioProjects/TickShare/app/src/test/java/com/network/test.json");
-        InputStream jsonStream = null;
-        try {
-            jsonStream = new FileInputStream(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        byte[] jsonBytes = null;
-        try {
-             jsonBytes = IOUtils.toByteArray(jsonStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        server.enqueue(new MockResponse().setBody(new String()));
-        try {
-            server.start();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        HttpUrl httpUrl = server.url(Constants.BASE_URL+"/trips");
-        NetworkManager networkManager = new NetworkManager();
-        final ITrip[] trip = {null};
-        networkManager.get(httpUrl.toString(),null,new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                ObjectMapper objectMapper = new ObjectMapper();
-                try {
-                    System.out.println(objectMapper.readValue(response.toString(), Trip.class));
-                    trip[0] = objectMapper.readValue(response.toString(), Trip.class);
-                } catch (JsonProcessingException e) {
+    public void getUseCase() {
+        List<ITrip> tripList = new ArrayList<>();
+        Mockito.when(networkManager.get("http://10.0.2.2:8080/")).thenReturn(tripList);
 
-                }
-            }
-            @Override
-            public void onFinish(){
-                signal.countDown();
-            }
-        });
+    }
+    @Test
+    public void getOneTripUseCase() {
+        List<ITrip> tripList = new ArrayList<>();
+        Mockito.when(networkManager.get("http://10.0.2.2:8080/1")).thenReturn(tripList);
 
     }
 
     @Test
-    public void post() {
+    public void postUseCase() {
+        Mockito.when(networkManager.post("http://10.0.2.2:8080/",trip)).thenReturn(true);
     }
 
     @Test
-    public void put() {
+    public void putUseCase() {
+        Mockito.when(networkManager.put("http://10.0.2.2:8080/",trip)).thenReturn(true);
+    }
+
+    @Test
+    public void deleteUseCase() {
+        Mockito.when(networkManager.delete("http://10.0.2.2:8080/1")).thenReturn(true);
+    }
+
+    @Test
+    public void postObjectNull() {
+        Mockito.when(networkManager.post("http://10.0.2.2:8080/",null)).thenReturn(false);
+    }
+
+    @Test
+    public void putUseObjectNull() {
+        Mockito.when(networkManager.put("http://10.0.2.2:8080/",null)).thenReturn(false);
+    }
+
+    @Test
+    public void deleteUseNumberNotInLIst() {
+        Mockito.when(networkManager.delete("http://10.0.2.2:8080/100")).thenReturn(false);
     }
 }

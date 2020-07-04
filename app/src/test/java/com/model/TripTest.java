@@ -3,7 +3,6 @@ package com.model;
 import com.authentication.Constants;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.text.SimpleDateFormat;

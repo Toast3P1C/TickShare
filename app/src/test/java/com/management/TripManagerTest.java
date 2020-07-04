@@ -3,19 +3,24 @@ package com.management;
 import com.authentication.Constants;
 import com.model.ITrip;
 import com.model.Trip;
-import com.network.INetworkManager;
-import com.network.NetworkManager;
+
 
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import okhttp3.HttpUrl;
+import okhttp3.mockwebserver.MockResponse;
+import okhttp3.mockwebserver.MockWebServer;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
+
 
 
 public class TripManagerTest {
@@ -82,10 +87,15 @@ public class TripManagerTest {
 
     @Test
     @Ignore
-    public void getTripFromServerUseCase(){
+    public void getTripFromServerUseCase() throws IOException {
         ITrip trip = new Trip(startingLocation,destination,stringTime,seatLeft,userToken);
-        INetworkManager networkManager = mock(NetworkManager.class);
-//      when(networkManager.get(Constants.BASE_URL+"/trips/1",null, ArgumentMatchers.<>any())).thenReturn(trip);
+        MockWebServer mockWebServer = new MockWebServer();
+        mockWebServer.enqueue(new MockResponse().setBody("hello, world!"));
+        HttpUrl httpUrl = mockWebServer.url("localhost:8080/trips/");
+        MockResponse response = new MockResponse()
+                .addHeader("Content-Type", "application/json; charset=utf-8")
+                .addHeader("Cache-Control", "no-cache")
+                .setBody("{\"id\":1,\"startingLocation\":\"Test\",\"destination\":\"test\",\"startingTime\":\"Tue Jun 30 09:49:32 UTC 2020\",\"seatsLeft\":4,\"userToken\":\"Token\"}");
 
 
     }
