@@ -50,6 +50,9 @@ public class NetworkManager implements INetworkManager {
         return trips;
     }
 
+    private void setupASAP(){
+
+    }
     public boolean post(String uri, Object o) {
         boolean success = false;
         HttpURLConnection urlConnection = null;
@@ -151,6 +154,11 @@ public class NetworkManager implements INetworkManager {
 
     }
 
+    public boolean postInASAP(){
+
+        return true;
+    }
+
     private String writeObjectToJsonString(Object o) {
         return gson.toJson(o);
     }
@@ -233,4 +241,7 @@ public class NetworkManager implements INetworkManager {
 
         return trips;
     }
+
+
 }
+

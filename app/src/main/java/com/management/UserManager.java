@@ -5,6 +5,8 @@ import com.authentication.Validator;
 import com.model.IUser;
 import com.model.User;
 
+import net.sharksystem.asap.ASAP;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -38,6 +40,7 @@ public class UserManager implements IUserManager {
             LOG.error("Can not create User");
             return false;
         }
+
     }
 
     @Override

@@ -1,2 +1,3 @@
+include ':app-debug'
 rootProject.name='TickShare'
 include ':app'
